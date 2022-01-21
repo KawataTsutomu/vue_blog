@@ -1,4 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+require("dotenv").config();
+const { API_KEY } = process.env;
+const axios = require("axios");
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -46,6 +49,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -75,5 +79,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  env: {
+    API_KEY
+  },
+
+  markdownit: {
+    html: true,
+    injected: true,
+    preset: 'default',
+  },
 }
