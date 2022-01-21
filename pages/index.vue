@@ -2,7 +2,10 @@
   <div>
     <h1>test-blog</h1>
     <div v-for="(item,key) in items" :key="key">
-       <h2>{{ item.title }}</h2>
+      <!-- 画面遷移できるようにnuxt-link追加 -->
+      <nuxt-link :to="'article/' + item.id">
+        <h2>{{ item.title }}</h2>
+      </nuxt-link>
     </div>
   </div>
 </template>
