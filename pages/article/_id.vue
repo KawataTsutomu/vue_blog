@@ -9,7 +9,7 @@
 </template>
 <script>
 import axios from "axios";
-import Prism from '@/plugins/prism';
+import Prism from '~/plugins/prism';
 
 export default {
   data() {
