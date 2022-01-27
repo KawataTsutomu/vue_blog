@@ -1,3 +1,4 @@
+import { values } from 'core-js/core/array';
 import colors from 'vuetify/es5/util/colors'
 require("dotenv").config();
 const { API_KEY } = process.env;
@@ -90,5 +91,21 @@ export default {
     html: true,
     injected: true,
     preset: 'default',
+  },
+  generate: {
+    routes() {
+      const blog = axios
+        .get("https://tomtomblog.microcms.io/api/v1/article", {
+          headers: { "X-MICROCMS-API-KEY" : process.env.API_KEY }
+        })
+        .then(res => {
+          return res.data.contents.map(blog => {
+            return "/article/" + blog.id;
+          });
+        });
+      return Promise.all([blog]).then(values => {
+        return values.join().split(",");
+      });
+    }
   },
 }
