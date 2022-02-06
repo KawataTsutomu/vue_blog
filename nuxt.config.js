@@ -1,4 +1,3 @@
-import { values } from 'core-js/core/array';
 import colors from 'vuetify/es5/util/colors'
 require("dotenv").config();
 const { API_KEY } = process.env;
@@ -81,20 +80,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    babel: {
-      presets({ isServer }) {
-        return [
-          [
-            require.resolve('@nuxt/babel-preset-app'),
-            // require.resolve('@nuxt/babel-preset-app-edge'), // For nuxt-edge users
-            {
-              buildTarget: isServer ? 'server' : 'client',
-              corejs: { version: 3 }
-            }
-          ]
-        ]
-      }
-    }
+
   },
 
   env: {
